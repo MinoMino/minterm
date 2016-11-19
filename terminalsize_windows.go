@@ -25,7 +25,15 @@ type consoleScreenBufferInfo struct {
 
 var getConsoleScreenBufferInfo = syscall.NewLazyDLL("kernel32.dll").NewProc("GetConsoleScreenBufferInfo")
 
+// Returns the terminal's number of columns and rows. If something goes wrong,
+// err will be non-nil, but also with reasonable fallback values of (80, 24).
+// In other words, the error can often be discarded.
 func TerminalSize() (columns, rows int, err error) {
+	// Reasonable fallback numbers, allowing the caller to discard
+	// the error without things blowing up.
+	columns = 80
+	rows = 24
+
 	var csbi consoleScreenBufferInfo
 	handle, err := syscall.GetStdHandle(syscall.STD_OUTPUT_HANDLE)
 	if err != nil {

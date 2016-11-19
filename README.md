@@ -1,3 +1,5 @@
+[![minterm](https://godoc.org/github.com/MinoMino/minterm?status.svg)](https://godoc.org/github.com/MinoMino/minterm)
+
 # minterm
 
 Just a small library to help manipulate the terminal in Go.

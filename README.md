@@ -26,8 +26,8 @@ defer lr.Release()
 lr.Set("This line will always be the last line.")
 fmt.Println("You can now print normally.")
 ```
-An example of how it looks like when used:
-![Line reservation example.](http://minomino.org/screenshots/ES3D_2016-11-19_19-31-35.gif)
+An example of it used in conjunction with [minprogress](https://github.com/MinoMino/minprogress):
+![Image of line reservation in use with minprogress.](http://minomino.org/screenshots/mkuJ_2016-11-23_06-59-57.gif)
 
 # License
 

@@ -48,10 +48,10 @@ func NewLineReserver() (*LineReserver, error) {
 		err:       os.Stderr,
 		flushChan: make(chan struct{}),
 	}
-	os.Stdout = w
-	os.Stderr = w
 	lr.wait.Add(1)
 	go lr.monitor()
+	os.Stdout = w
+	os.Stderr = w
 
 	return lr, nil
 }
@@ -98,7 +98,9 @@ func (lr *LineReserver) monitor() {
 				lr.r.Close()
 				return
 			}
-			c <- buf[0:n]
+			outbuf := make([]byte, n)
+			copy(outbuf, buf[:n])
+			c <- outbuf
 		}
 	}()
 

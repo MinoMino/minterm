@@ -14,7 +14,6 @@ import "github.com/MinoMino/minterm"
 ```
 
 ###Terminal Size
-Only works on Windows as of writing, but Unix support will be added.
 ```go
 columns, rows, err := minterm.TerminalSize()
 ```
